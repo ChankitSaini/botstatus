@@ -5,17 +5,18 @@ import datetime
 import pytz
 import os
 
-app = Client(
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"],
-    session_string = os.environ["SESSION_STRING"]
-)
+
+API_ID = int(os.environ["API_ID"]),
+API_HASH = os.environ["API_HASH"],
+SESSION_STRING = os.environ["SESSION_STRING"]
 TIME_ZONE = os.environ["TIME_ZONE"]
 BOT_LIST = [i.strip() for i in os.environ.get("BOT_LIST").split(' ')]
 CHANNEL_ID = int(os.environ["CHANNEL_ID"])
 GROUP_ID = int(os.environ["GROUP_ID"])
 MESSAGE_ID = int(os.environ["MESSAGE_ID"])
 BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split(' ')]
+
+app = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
 async def main_botstatus():
     async with app:
