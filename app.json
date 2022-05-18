@@ -27,8 +27,12 @@
             "description": "Your bot username list without '@' (Example: quizbot reactbot)",
             "required": true
         },
-       "CHANNEL_OR_GROUP_ID": {
-            "description": "Your channel's or group's Telegram id (Example: -1001246xxxxx)",
+       "GROUP_ID": {
+            "description": "Your group's Telegram id (Example: -1001246xxxxx)",
+            "required": true
+        },
+        "CHANNEL_ID": {
+            "description": "Your channel's Telegram id (Example: -1001246xxxxx)",
             "required": true
         },
        "MESSAGE_ID": {

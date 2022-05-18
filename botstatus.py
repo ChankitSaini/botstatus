@@ -6,14 +6,14 @@ import pytz
 import os
 
 app = Client(
-    name = "bot",
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"],
     session_string = os.environ["SESSION_STRING"]
 )
 TIME_ZONE = os.environ["TIME_ZONE"]
 BOT_LIST = [i.strip() for i in os.environ.get("BOT_LIST").split(' ')]
-CHANNEL_OR_GROUP_ID = int(os.environ["CHANNEL_OR_GROUP_ID"])
+CHANNEL_ID = int(os.environ["CHANNEL_ID"])
+GROUP_ID = int(os.environ["GROUP_ID"])
 MESSAGE_ID = int(os.environ["MESSAGE_ID"])
 BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split(' ')]
 
@@ -46,8 +46,8 @@ async def main_botstatus():
                 time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
                 last_update = time.strftime(f"%d %b %Y at %I:%M %p")
                 xxx_botstatus += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n<i>♻️ Refreshes automatically</i>"
-                await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_botstatus)
-                await app.send_message(int(CHANNEL_OR_GROUP_ID), xxx_botstatus)
+                await app.edit_message_text(int(CHANNEL_ID), MESSAGE_ID, xxx_botstatus)
+                await app.send_message(int(GROUP_ID), xxx_botstatus)
                 print(f"Last checked on: {last_update}")                
                 await asyncio.sleep(1800)
                         
