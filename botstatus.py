@@ -16,7 +16,7 @@ GROUP_ID = int(os.environ["GROUP_ID"])
 MESSAGE_ID = int(os.environ["MESSAGE_ID"])
 BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split(' ')]
 
-app = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
+app = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 async def main_botstatus():
     async with app:
